@@ -1,0 +1,19 @@
+FILE BASED CRD OF A DATASTORE:
+
+*This is a simple file based crd datastore.
+*In this datastore, you can create , read and delete.
+*The key and values are stored in the "values.txt" which is stored in the local storage of the laptop.
+*if the key value pair is deleted, then the pair is deleted from the "values.txt"
+*The functions are create(),read(),destroy().
+
+Argument explanation:
+* create(key,value,time_to_live,new_file)
+    key=key value to be entered
+    value=value to be entered
+    time_to_live=the secs left to expiry
+    new_file= new_file=0->if you want to use the old datastore.
+              new_file=1->if you want to create new datastore.
+* read(key)
+    key=Whose value has to be read.
+* destroy(key)
+    key=whose value has to be deleted
