@@ -29,7 +29,7 @@ def create(key,value,ttl=0,new=0):
                         if (ttl == 0):
                             temp = [str(value), str(ttl)]
                         elif (ttl > 0):
-                            temp = [str(value), str(time.time() + ttl)]
+                            temp = [str(value), str(time.time() + ttl)]    #to store the time limit 
                     if(new == 1):
                         fr = open("values.txt", "w")
                     elif(new == 0):
