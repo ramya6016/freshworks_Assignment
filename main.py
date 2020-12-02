@@ -10,7 +10,7 @@ def create(key,value,ttl=0,new=0):
         if (size < 1024 * 1024 * 1024): #to not exceed 1gb
             if (len(key) < 32):
                 if (value <= 16 * 1024 * 1024):
-                    if(new==0):
+                    if(new==0):  #to append the existing datastore
                         f=open("values.txt","r")
                         data = f.read().split('\n')
                         f.close()
@@ -20,8 +20,8 @@ def create(key,value,ttl=0,new=0):
                                 print(key + " is already present")
                                 break
                             else:
-                                count +=1
-                    elif(new == 1):
+                                count +=1 
+                    elif(new == 1):  #to create a new datastore
                         f = open("values.txt", "w").close()
                         data=[]
                     temp=[]
@@ -55,7 +55,7 @@ def destroy(key):
             if (len(data) > 1):
                 if(data[0]==key):
                     if(data[2] != '0'):
-                        if (time.time() >= float(data[2])):
+                        if (time.time() >= float(data[2])): #checking the time limit 
                             print("Time limit of " + key + " is expired!!")
                     else:
                         fw = open("values.txt", "w").close()
@@ -88,9 +88,9 @@ def read(key):
                 if(data[0]==key):
                     if (data[2] != '0'):
                         if (time.time() >= float(data[2])):
-                            print("Time limit of " + key + " is expired!!")
+                            print("Time limit of " + key + " is expired!!")   
                             break
-                    d={'key':key,'value':data[1]}
+                    d={'key':key,'value':data[1]}  #printing the value in json format
                     print(d)
                 else:
                     count=count+1
