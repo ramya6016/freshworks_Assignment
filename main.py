@@ -63,7 +63,7 @@ def destroy(key):
                         for i in range(len(temp1)):
                             data1 = (temp1[i].split(' '))
                             if (len(data1) > 1):
-                                if (data1[0] != key):
+                                if (data1[0] != key):   #to delete the key value pair
                                     fr.write(' '.join(data1))
                                     fr.write('\n')
                                 else:
