@@ -13,6 +13,7 @@ def create(key,value,ttl=0,new=0):
                     if(new==0):
                         f=open("values.txt","r")
                         data = f.read().split('\n')
+                        f.close()
                         for line in data:
                             line = line.split(' ')
                             if (line[0] == key):
@@ -48,8 +49,8 @@ def destroy(key):
         count=1
         fs = open("values.txt", "r")
         temp1 = fs.read().split('\n')
+        fs.close()
         for i in range(len(temp1)):
-            temp = temp1[i]
             data = (temp1[i].split(' '))
             if (len(data) > 1):
                 if(data[0]==key):
@@ -58,15 +59,16 @@ def destroy(key):
                             print("Time limit of " + key + " is expired!!")
                     else:
                         fw = open("values.txt", "w").close()
+                        fr = open("values.txt", "a")
                         for i in range(len(temp1)):
                             data1 = (temp1[i].split(' '))
                             if (len(data1) > 1):
-                                fr = open("values.txt", "a")
                                 if (data1[0] != key):
                                     fr.write(' '.join(data1))
                                     fr.write('\n')
                                 else:
                                     continue
+                        fr.close()
                         print(key +" is Deleted successfully!")
                 else:
                     count+=1
@@ -78,6 +80,7 @@ def read(key):
         count=1
         fy = open("values.txt", "r")
         temp1 = fy.read().split('\n')
+        fy.close()
         for i in range(len(temp1)):
             temp = temp1[i]
             data = (temp1[i].split(' '))
